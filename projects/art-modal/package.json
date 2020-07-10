@@ -1,0 +1,27 @@
+{
+  "name": "art-modal",
+  "version": "0.0.3",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aferreiradesouza/art-modal.git"
+  },
+  "keywords": [],
+  "author": "Arthur Ferreira de Souza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aferreiradesouza/art-modal.git"
+  },
+  "homepage": "https://github.com/aferreiradesouza/art-modal.git",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  }
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ConfirmacaoIdadeAposentadoriaComponent } from './modal/confirmacao.component';
+import { ArtModalService } from 'projects/art-modal/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'modal-module';
+
+  constructor(private modalService: ArtModalService) { }
+
+  teste() {
+    const modalRef = this.modalService.open(
+      ConfirmacaoIdadeAposentadoriaComponent,
+      { title: 'Tesde de título', message: 'Teste de mensagem' }
+    );
+
+    modalRef.onResult().subscribe(
+      success => console.log(success),
+      dismissed => console.log('dismissed')
+    );
+  }
 }
