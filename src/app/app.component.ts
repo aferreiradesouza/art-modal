@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmacaoIdadeAposentadoriaComponent } from './modal/confirmacao.component';
-import { ArtModalService } from 'projects/art-modal/src/public-api';
+import { ArtModalService } from 'art-modal';
 
 @Component({
   selector: 'app-root',

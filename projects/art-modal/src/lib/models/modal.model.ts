@@ -8,16 +8,10 @@ export abstract class ArtModal {
 
   close(output?: any): void {
     this.modalInstance.close(output);
-    this.showOverflow();
   }
 
   dismiss(output?: any): void {
     this.modalInstance.dismiss(output);
-    this.showOverflow();
-  }
-
-  showOverflow() {
-    document.getElementsByTagName('body')[0].style.overflowY = 'auto';
   }
 
 }

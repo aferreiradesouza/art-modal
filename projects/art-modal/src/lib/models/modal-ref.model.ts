@@ -36,10 +36,19 @@ export class ArtModalRef {
         this.result$.complete();
         this.modalContainer.destroy();
         this.removeTag();
+        if (!document.getElementsByClassName('artModal').length) {
+          this.showOverflow();
+        }
     }
 
     removeTag() {
-        document.getElementsByClassName('artModal')[document.getElementsByClassName('artModal').length - 1].parentElement.remove();
+        try {
+            document.getElementsByClassName('artModal')[document.getElementsByClassName('artModal').length - 1].parentElement.remove();
+        } catch (err) { }
+    }
+
+    showOverflow() {
+      document.getElementsByTagName('body')[0].style.overflowY = 'auto';
     }
 
 }

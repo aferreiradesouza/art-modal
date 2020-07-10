@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ConfirmacaoIdadeAposentadoriaComponent } from './modal/confirmacao.component';
-import { ArtModalServiceModule } from 'projects/art-modal/src/public-api';
+import { ArtModalServiceModule } from 'art-modal';
 
 @NgModule({
   declarations: [
