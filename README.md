@@ -1,27 +1,89 @@
-# ModalModule
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.11.
+# Art Modal
 
-## Development server
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Art Modal is an easy-to-use library.
 
-## Code scaffolding
+DEMO: coming soon
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Install
 
-## Build
+```
+$ npm i art-modal
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# How to use
 
-## Running unit tests
+**1:** Import the ArtModalServiceModule into your app.module
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { ArtModalServiceModule } from 'art-modal';
 
-## Running end-to-end tests
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    ArtModalServiceModule.forRoot()
+  ],
+  providers: [...],
+})
+export class AppModule { }
+```
+**2:** Create a component and extend the ArtModal class
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**note**: Create your modal with 1040 z-index
 
-## Further help
+```typescript
+import { Component, OnInit } from  '@angular/core';
+import { ArtModal } from  'art-modal';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+@Component({...})
+
+export  class  ModalExample  extends  ArtModal {
+	public  title: string;
+	public  message: string;
+
+	constructor() { }
+
+	onInjectInputs(inputs): void {
+		this.title = inputs.title;
+		this.message = inputs.message;
+	}
+
+	save(): void {
+		this.close('save');
+	}
+
+	cancel(): void {
+		this.dismiss('canceling');
+	}
+}
+```
+
+**3**: In the app.component, inject the ArtModalService
+
+```typescript
+import { Component } from  '@angular/core';
+import { ModalExample} from  './modal/modal-example.component';
+import { ArtModalService } from  'art-modal';
+
+@Component({ ... })
+
+export  class  AppComponent {
+
+	constructor(private  modalService: ArtModalService) { }
+
+	showModal() {
+		const  modalRef = this.modalService.open(
+		ModalExample, // Import the modal component here
+		{ title:  'Title', message:  'message' });
+
+		modalRef.onResult().subscribe(
+			success  =>  console.log(success),
+			dismissed  =>  console.log('dismissed'));
+	}
+}
+```
